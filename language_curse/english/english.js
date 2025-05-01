@@ -29,116 +29,84 @@ document.addEventListener('DOMContentLoaded', () => {
         enrollmentForm.reset();
     });
 
-    // Testimonials Slider
-    const track = document.querySelector('.testimonials-track');
-    const cards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.slider-dots');
-    
-    let currentIndex = 0;
-    const cardsPerView = 3;
-    const totalCards = cards.length;
-    let autoSlideInterval;
-    const autoSlideDelay = 5000; // 5 seconds between slides
-    
-    // Create dots
-    cards.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-            resetAutoSlide();
-        });
-        dotsContainer.appendChild(dot);
-    });
-    
+    // Comments slider functionality
+    const commentsTrack = document.querySelector('.comments-track');
+    const comments = document.querySelectorAll('.comment-card');
     const dots = document.querySelectorAll('.dot');
-    
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+
+    let currentIndex = 0;
+    const totalComments = comments.length;
+
     function updateSlider() {
-        const offset = currentIndex * -100;
-        track.style.transform = `translateX(${offset}%)`;
+        const offset = -currentIndex * 100;
+        commentsTrack.style.transform = `translateX(${offset}%)`;
         
         // Update dots
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
-        
-        // Update button states
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= totalCards - cardsPerView;
     }
-    
-    function goToSlide(index) {
-        currentIndex = index;
-        updateSlider();
-    }
-    
-    function nextSlide() {
-        if (currentIndex < totalCards - cardsPerView) {
-            currentIndex++;
-        } else {
-            currentIndex = 0; // Loop back to the beginning
-        }
-        updateSlider();
-    }
-    
-    function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            currentIndex = totalCards - cardsPerView; // Loop to the end
-        }
-        updateSlider();
-    }
-    
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
-    }
-    
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-    
-    // Add hover pause functionality
-    track.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-    
-    track.addEventListener('mouseleave', () => {
-        startAutoSlide();
-    });
-    
+
+    // Event listeners for navigation
     prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoSlide();
+        currentIndex = (currentIndex - 1 + totalComments) % totalComments;
+        updateSlider();
     });
-    
+
     nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoSlide();
+        currentIndex = (currentIndex + 1) % totalComments;
+        updateSlider();
     });
-    
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+    });
+
+    // Auto-slide functionality
+    let slideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalComments;
+        updateSlider();
+    }, 5000);
+
+    // Pause auto-slide on hover
+    commentsTrack.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+
+    commentsTrack.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalComments;
+            updateSlider();
+        }, 5000);
+    });
+
     // Initialize slider
     updateSlider();
-    startAutoSlide();
 
     // Function to handle scroll spy
     function handleScrollSpy() {
         const scrollPosition = window.scrollY;
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.course-nav a');
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            
+            const navLink = document.querySelector(`.course-nav a[href="#${sectionId}"]`);
+
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all links
                 navLinks.forEach(link => link.classList.remove('active'));
-                const activeLink = document.querySelector(`.course-nav a[href="#${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+                // Add active class to current section's link
+                if (navLink) {
+                    navLink.classList.add('active');
                 }
             }
         });
@@ -147,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click event listeners to nav links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // Remove active class from all links
             navLinks.forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
             e.target.classList.add('active');
         });
     });
@@ -157,67 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial check for active section
     handleScrollSpy();
-
-    // Auto-sliding functionality for testimonials
-    const testimonialsTrack = document.querySelector('.testimonials-track');
-    const testimonialsSlides = document.querySelectorAll('.testimonial-card');
-    let currentTestimonialIndex = 0;
-
-    function moveTestimonialSlide() {
-        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialsSlides.length;
-        testimonialsTrack.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
-    }
-
-    // Auto-sliding functionality for comments
-    const commentsTrack = document.querySelector('.comments-track');
-    const commentSlides = document.querySelectorAll('.comment-card');
-    let currentCommentIndex = 0;
-
-    function moveCommentSlide() {
-        currentCommentIndex = (currentCommentIndex + 1) % commentSlides.length;
-        commentsTrack.style.transform = `translateX(-${currentCommentIndex * 100}%)`;
-    }
-
-    // Set up auto-sliding intervals
-    let testimonialInterval = setInterval(moveTestimonialSlide, 5000);
-    let commentInterval = setInterval(moveCommentSlide, 5000);
-
-    // Pause auto-sliding when hovering over either section
-    document.querySelector('.testimonials-section').addEventListener('mouseenter', () => {
-        clearInterval(testimonialInterval);
-    });
-
-    document.querySelector('.testimonials-section').addEventListener('mouseleave', () => {
-        testimonialInterval = setInterval(moveTestimonialSlide, 5000);
-    });
-
-    document.querySelector('.comments-section').addEventListener('mouseenter', () => {
-        clearInterval(commentInterval);
-    });
-
-    document.querySelector('.comments-section').addEventListener('mouseleave', () => {
-        commentInterval = setInterval(moveCommentSlide, 5000);
-    });
-
-    // Manual navigation for testimonials
-    document.querySelector('.testimonials-prev').addEventListener('click', () => {
-        currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonialsSlides.length) % testimonialsSlides.length;
-        testimonialsTrack.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
-    });
-
-    document.querySelector('.testimonials-next').addEventListener('click', () => {
-        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialsSlides.length;
-        testimonialsTrack.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
-    });
-
-    // Manual navigation for comments
-    document.querySelector('.comments-prev').addEventListener('click', () => {
-        currentCommentIndex = (currentCommentIndex - 1 + commentSlides.length) % commentSlides.length;
-        commentsTrack.style.transform = `translateX(-${currentCommentIndex * 100}%)`;
-    });
-
-    document.querySelector('.comments-next').addEventListener('click', () => {
-        currentCommentIndex = (currentCommentIndex + 1) % commentSlides.length;
-        commentsTrack.style.transform = `translateX(-${currentCommentIndex * 100}%)`;
-    });
 });

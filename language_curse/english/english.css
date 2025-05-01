@@ -46,6 +46,7 @@ body {
     transition: all 0.3s ease;
     white-space: nowrap;
     font-size: 0.95rem;
+    position: relative;
 }
 
 .course-nav a:hover {
@@ -60,6 +61,19 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.course-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 768px) {
     .course-nav ul {
         gap: 0.5rem;
@@ -68,6 +82,11 @@ body {
     .course-nav a {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
+    }
+
+    .course-nav a.active::after {
+        width: 20px;
+        height: 2px;
     }
 }
 
@@ -659,6 +678,52 @@ h2 {
 
 .rating i {
     margin-right: 0.2rem;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.slider-btn {
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: rgb(237, 234, 255);
+    transform: scale(1.1);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: rgb(237, 234, 255);
+    transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
