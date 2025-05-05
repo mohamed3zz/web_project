@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Container for the entire course card */
+.container {
+  display: flex;          /* Side-by-side layout */
+  align-items: center;    /* Vertically center items */
+  gap: 20px;             /* Space between image and text */
+  max-width: 800px;      /* Limit card width */
+  margin: 20px auto;     /* Center card on page */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Image container with constraints */
+.image-container {
+  width: 150px;          /* Fixed width */
+  height: 150px;         /* Fixed height */
+  display: flex;         /* For centering */
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;   /* Fallback background */
+  border-radius: 4px;
+  overflow: hidden;      /* Hide overflowing parts */
+}
+
+/* Image styling */
+.image-container img {
+  max-width: 100%;       /* Never exceed container */
+  max-height: 100%;      /* Never exceed container */
+  object-fit: contain;   /* Show full image without stretching */
+  padding: 10px;         /* Breathing room */
+}
