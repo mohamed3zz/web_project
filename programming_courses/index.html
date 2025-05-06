@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="P_mainpage.css">
     <title>Programming courses</title>
 </head>
 <body>
+    <script src="P_mainpage.js"></script>
     <div class="card_container"> <!--C++-->
         <div class="card_img">
             <img src="items/c++_course.png" alt="C++ course">
@@ -22,7 +23,7 @@
                 this course covers everything from basic syntax to object-oriented programming 
             </p>
             <div class="button_co">
-               <button class="card_button">Enroll Now</button>
+               <button class="card_button" onclick="opencourse('programming_pages/c++.html')">Enroll Now</button>
                 <h2> 4.9/5⭐</h2>
             </div>
         </div>
@@ -110,5 +111,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
