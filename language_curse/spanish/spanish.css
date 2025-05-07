@@ -354,7 +354,7 @@ h1 {
 
 .enroll-btn {
     background: rgb(237, 234, 255);
-    color: #2c3e50;;
+    color: #2c3e50;
     padding: 1rem 2rem;
     border: none;
     border-radius: 25px;
@@ -366,7 +366,7 @@ h1 {
 }
 
 .enroll-btn:hover {
-    background:  rgb(199, 196, 211);
+    background: rgb(199, 196, 211);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }

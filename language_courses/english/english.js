@@ -1,130 +1,172 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const enrollmentForm = document.getElementById('enrollment-form');
-    const enrollmentMessage = document.getElementById('enrollment-message');
-    const navLinks = document.querySelectorAll('.course-nav a');
-    const sections = document.querySelectorAll('section[id]');
-    
-    // Handle form submission
-    enrollmentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Comments Slider Functionality
+    const commentsTrack = document.querySelector('.comments-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const commentCards = document.querySelectorAll('.comment-card');
+    let currentIndex = 0;
+
+    // Function to update slider position
+    function updateSlider() {
+        const cardWidth = commentCards[0].offsetWidth + 32; // Width + gap
+        commentsTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
         
-        // Get form data
-        const formData = new FormData(enrollmentForm);
-        const userData = {
-            fullName: formData.get('fullName'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            level: formData.get('level'),
-            instructor: formData.get('instructor')
-        };
-        
-        // Here you would typically send the data to your server
-        console.log('Enrollment data:', userData);
-        
-        // Hide the form and show the success message
-        enrollmentForm.style.display = 'none';
-        enrollmentMessage.style.display = 'block';
-        
-        // Reset the form
-        enrollmentForm.reset();
+        // Update active state of navigation dots
+        updateDots();
+    }
+
+    // Create navigation dots
+    const dotsContainer = document.querySelector('.slider-dots');
+    commentCards.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+        dotsContainer.appendChild(dot);
     });
 
-    // Comments slider functionality
-    const commentsTrack = document.querySelector('.comments-track');
-    const comments = document.querySelectorAll('.comment-card');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-
-    let currentIndex = 0;
-    const totalComments = comments.length;
-
-    function updateSlider() {
-        const offset = -currentIndex * 100;
-        commentsTrack.style.transform = `translateX(${offset}%)`;
-        
-        // Update dots
+    // Update dots active state
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
     }
 
-    // Event listeners for navigation
+    // Event listeners for slider buttons
     prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalComments) % totalComments;
-        updateSlider();
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
     });
 
     nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalComments;
-        updateSlider();
-    });
-
-    // Dot navigation
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
+        if (currentIndex < commentCards.length - 1) {
+            currentIndex++;
             updateSlider();
-        });
+        }
     });
 
     // Auto-slide functionality
     let slideInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % totalComments;
+        if (currentIndex < commentCards.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
         updateSlider();
     }, 5000);
 
     // Pause auto-slide on hover
-    commentsTrack.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-
+    commentsTrack.addEventListener('mouseenter', () => clearInterval(slideInterval));
     commentsTrack.addEventListener('mouseleave', () => {
         slideInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % totalComments;
+            if (currentIndex < commentCards.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
             updateSlider();
         }, 5000);
     });
 
-    // Initialize slider
-    updateSlider();
+    // Navigation Menu Highlighting
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.course-nav a');
 
-    // Function to handle scroll spy
-    function handleScrollSpy() {
-        const scrollPosition = window.scrollY;
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.course-nav a');
-
+    function highlightNavigation() {
+        let currentSection = '';
+        
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.course-nav a[href="#${sectionId}"]`);
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 200)) {
+                currentSection = section.getAttribute('id');
+            }
+        });
 
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
-                // Add active class to current section's link
-                if (navLink) {
-                    navLink.classList.add('active');
-                }
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === currentSection) {
+                link.classList.add('active');
             }
         });
     }
 
-    // Add click event listeners to nav links
+    // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add active class to clicked link
-            e.target.classList.add('active');
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const targetSection = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
         });
     });
 
-    // Listen for scroll events
-    window.addEventListener('scroll', handleScrollSpy);
+    // Form Submission Handling
+    const enrollmentForm = document.getElementById('enrollment-form');
+    const enrollmentMessage = document.getElementById('enrollment-message');
+
+    enrollmentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(enrollmentForm);
+        const formDataObj = {};
+        formData.forEach((value, key) => {
+            formDataObj[key] = value;
+        });
+
+        // Here you would typically send the data to a server
+        console.log('Form submitted:', formDataObj);
+
+        // Show success message
+        enrollmentForm.style.display = 'none';
+        enrollmentMessage.style.display = 'block';
+
+        // Reset form
+        enrollmentForm.reset();
+    });
+
+    // Scroll event listener for navigation highlighting
+    window.addEventListener('scroll', highlightNavigation);
+
+    // Initial call to set correct navigation highlight
+    highlightNavigation();
+
+    // Add animation on scroll
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.overview-card, .feature, .instructor-card, .timeline-item');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    // Set initial styles for animation
+    document.querySelectorAll('.overview-card, .feature, .instructor-card, .timeline-item').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    // Add scroll event listener for animations
+    window.addEventListener('scroll', animateOnScroll);
     
-    // Initial check for active section
-    handleScrollSpy();
-});
+    // Initial call to animate elements in view
+    animateOnScroll();
+}); 

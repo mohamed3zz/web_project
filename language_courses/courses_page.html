@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Courses</title>
+    <!-- External CSS files for styling -->
     <link rel="stylesheet" href="courses_page.css">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Main container for all content -->
     <div class="container">
-        <h1 class="main-title"></h1>
+        <!-- Main title section -->
+        
+        <!-- Grid container for all course cards -->
         <div class="courses-grid">
+            <!-- English Course Card -->
             <div class="course-card">
+                <!-- Course image section with hover effect -->
                 <div class="card-image">
                     <img src="pics/Statue of Liberty.jpg" alt="English Course">
                 </div>
+                <!-- Course content section with expandable details -->
                 <div class="card-content">
+                    <!-- Course icon with language symbol -->
                     <div class="card-icon">
                         <i class="fas fa-language"></i>
                     </div>
+                    <!-- Course title and description -->
                     <h2>English</h2>
                     <p>Master the global language of business and communication. Perfect for beginners to advanced learners.</p>
+                    <!-- Key features list with bullet points -->
                     <ul class="features">
                         <li>Interactive lessons</li>
                         <li>Speaking practice</li>
                         <li>Business English</li>
                     </ul>
+                    <!-- Expandable content section (shows on hover) -->
                     <div class="expanded-content">
+                        <!-- Detailed course information with icons -->
                         <div class="course-details">
                             <h3>Course Details</h3>
                             <ul>
@@ -37,27 +51,35 @@
                                 <li><i class="fas fa-calendar"></i> Practice Sessions: 3 times/week</li>
                             </ul>
                         </div>
-                        <button class="enroll-btn">Enroll Now</button>
+                        <!-- Enrollment button with click handler -->
+                        <button class="enroll-btn" onclick="handleEnrollment('English')">Enroll Now</button>
                     </div>
                 </div>
             </div>
-
+            <!-- Spanish Course Card -->
             <div class="course-card">
+                <!-- Course image section -->
                 <div class="card-image">
                     <img src="pics/spain.jpg" alt="Spanish Course">
                 </div>
+                <!-- Course content section -->
                 <div class="card-content">
+                    <!-- Course icon with conversation symbol -->
                     <div class="card-icon">
                         <i class="fas fa-comments"></i>
                     </div>
+                    <!-- Course title and description -->
                     <h2>Spanish</h2>
                     <p>Learn one of the world's most spoken languages. Immerse yourself in Hispanic culture and communication.</p>
+                    <!-- Key features list -->
                     <ul class="features">
                         <li>Cultural immersion</li>
                         <li>Grammar mastery</li>
                         <li>Conversation skills</li>
                     </ul>
+                    <!-- Expandable content section -->
                     <div class="expanded-content">
+                        <!-- Detailed course information -->
                         <div class="course-details">
                             <h3>Course Details</h3>
                             <ul>
@@ -68,27 +90,35 @@
                                 <li><i class="fas fa-calendar"></i> Cultural Activities: Weekly</li>
                             </ul>
                         </div>
-                        <button class="enroll-btn">Enroll Now</button>
+                        <!-- Enrollment button -->
+                        <button class="enroll-btn" onclick="handleEnrollment('Spanish')">Enroll Now</button>
                     </div>
                 </div>
             </div>
-
+            <!-- French Course Card -->
             <div class="course-card">
+                <!-- Course image section -->
                 <div class="card-image">
                     <img src="pics/Eiffeltower .jpg" alt="French Course">
                 </div>
+                <!-- Course content section -->
                 <div class="card-content">
+                    <!-- Course icon with book symbol -->
                     <div class="card-icon">
                         <i class="fas fa-book"></i>
                     </div>
+                    <!-- Course title and description -->
                     <h2>French</h2>
                     <p>Discover the language of love and culture. From basic phrases to advanced literature.</p>
+                    <!-- Key features list -->
                     <ul class="features">
                         <li>Pronunciation focus</li>
                         <li>Cultural context</li>
                         <li>Writing skills</li>
                     </ul>
+                    <!-- Expandable content section -->
                     <div class="expanded-content">
+                        <!-- Detailed course information -->
                         <div class="course-details">
                             <h3>Course Details</h3>
                             <ul>
@@ -99,27 +129,35 @@
                                 <li><i class="fas fa-calendar"></i> Literature Focus: Weekly</li>
                             </ul>
                         </div>
-                        <button class="enroll-btn">Enroll Now</button>
+                        <!-- Enrollment button -->
+                        <button class="enroll-btn" onclick="handleEnrollment('French')">Enroll Now</button>
                     </div>
                 </div>
             </div>
-
+            <!-- Japanese Course Card -->
             <div class="course-card">
+                <!-- Course image section -->
                 <div class="card-image">
                     <img src="pics/japan.jpg" alt="Japanese Course">
                 </div>
+                <!-- Course content section -->
                 <div class="card-content">
+                    <!-- Course icon with Asia globe symbol -->
                     <div class="card-icon">
                         <i class="fas fa-globe-asia"></i>
                     </div>
+                    <!-- Course title and description -->
                     <h2>Japanese</h2>
                     <p>Explore the fascinating world of Japanese language and culture. Perfect for anime and manga lovers.</p>
+                    <!-- Key features list -->
                     <ul class="features">
                         <li>Writing systems</li>
                         <li>Cultural insights</li>
                         <li>Modern Japanese</li>
                     </ul>
+                    <!-- Expandable content section -->
                     <div class="expanded-content">
+                        <!-- Detailed course information -->
                         <div class="course-details">
                             <h3>Course Details</h3>
                             <ul>
@@ -130,12 +168,14 @@
                                 <li><i class="fas fa-calendar"></i> Calligraphy: Bi-weekly</li>
                             </ul>
                         </div>
-                        <button class="enroll-btn">Enroll Now</button>
+                        <!-- Enrollment button -->
+                        <button class="enroll-btn" onclick="handleEnrollment('Japanese')">Enroll Now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- JavaScript file for interactive functionality -->
     <script src="courses_page.js"></script>
 </body>
 </html>
