@@ -2,16 +2,16 @@ const allcards = [
     {id:1, title:"C++_course",img:"../items/c++_course.png",link:"c++.html",
     text_title:"C++ from begginer to master"},
 
-    {id:2, title:"java_course",img:"../items/java_course.jpeg",link:"c++.html",
+    {id:2, title:"java_course",img:"../items/java_course.jpeg",link:"java.html",
     text_title:"Industrial-Grade Java Development "},
 
-    {id:3, title:"python_course",img:"../items/python_course.jpg",link:"c++.html",
+    {id:3, title:"python_course",img:"../items/python_course.jpg",link:"python.html",
     text_title:"Python: Your Swiss Army Knife for Coding "},
 
-    {id:4, title:"php_course",img:"../items/php_course.png",link:"c++.html",
+    {id:4, title:"php_course",img:"../items/php_course.png",link:"php.html",
     text_title:"PHP: Web Wizardry Unleashed "},
 
-    {id:5, title:"javascript_course",img:"../items/java_script_course.jpg",link:"c++.html",
+    {id:5, title:"javascript_course",img:"../items/java_script_course.jpg",link:"java_script.html",
     text_title:"JavaScript: The Web's Native Tongue"},
    ];
 let current_index = 0 ;
@@ -58,3 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons[1].addEventListener('click', next_slide);  // Next button (>)
 });
 render_cards();
+document.getElementById('enroll-btn').onclick = function() {
+    this.textContent = "Thanks for enrolling!";
+    this.style.backgroundColor = "#d1a5fd";
+    this.style.color = "black";
+    this.disabled = true;
+};
