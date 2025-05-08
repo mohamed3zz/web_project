@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #001013;
+}
+
+.header {
+  background: #0fd4ee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3415e3;
+}
+
+.navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.header-btns button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.search {
+  background: #f0f0f0;
+}
+
+.sign-up {
+  background: #cbc0c88a;
+  color: white;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 60px 40px;
+  background: #20d7d7;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #1411db;
+}
+
+.hero-text p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.explore-btn {
+  background: #2213ce;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.categories {
+  padding: 40px;
+  background: #11ade6d6;
+  text-align: center;
+}
+
+.categories h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.category {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

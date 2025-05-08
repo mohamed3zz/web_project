@@ -1,0 +1,217 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(to right, white, #eef2ff);
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.image-section {
+  position: relative;
+  width: 384px;
+  height: 384px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.circular-text {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  text-align: center;
+  transform: rotate(-25deg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  letter-spacing: 0.2em;
+}
+
+.rounded-image {
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
+  border: 6px solid black;
+  overflow: hidden;
+  background: white;
+}
+
+.rounded-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.content-section {
+  max-width: 600px;
+}
+
+.badge {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #4338ca;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #111827;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-top: 1rem;
+}
+
+details {
+  border-bottom: 1px solid #d1d5db;
+  padding: 1rem 0;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #6366f1;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+summary::marker {
+  display: none;
+}
+
+details[open] summary span {
+  transform: rotate(180deg);
+}
+
+summary span {
+  transition: transform 0.3s;
+}
+
+.faq-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Course Promo Section */
+.promo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .promo-section {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.play-button {
+  position: absolute;
+  background: white;
+  padding: 0.8rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.enroll-badge {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.enroll-badge img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  font-weight: 600;
+  color: #6366f1;
+  margin: 0.5rem 0;
+}
+
+.features li span {
+  color: #facc15;
+  margin-right: 0.5rem;
+}
+
+.cta-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #4338ca;
+}

@@ -56,16 +56,14 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     position: relative;
     height: 300px;
     width: 100%;
     display: flex;
 }
 
-/* Hover effect: card elevation and height increase */
+/* Hover effect: card elevation */
 .course-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     height: 500px;
 }
@@ -80,17 +78,11 @@ body {
     overflow: hidden;
 }
 
-/* Image styles with cover fit and smooth transition */
+/* Image styles with cover fit */
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-/* Image zoom effect on card hover */
-.course-card:hover .card-image img {
-    transform: scale(1.05);
 }
 
 /* ==========================================================================
@@ -171,12 +163,11 @@ p {
 /* ==========================================================================
    Expandable Content
    ========================================================================== */
-/* Hidden content section with transition */
+/* Hidden content section */
 .expanded-content {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
 }
 
 /* Show expanded content on card hover */
@@ -227,7 +218,7 @@ p {
 /* ==========================================================================
    Call to Action
    ========================================================================== */
-/* Enrollment button with hover effects */
+/* Enrollment button */
 .enroll-btn {
     background: rgb(237, 234, 255);
     color: #2c3e50;
@@ -236,16 +227,14 @@ p {
     border-radius: 25px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
     width: 100%;
     margin-top: 1.5rem;
     display: block;
 }
 
-/* Button hover state with elevation */
+/* Button hover state */
 .enroll-btn:hover {
     background: rgb(217, 214, 235);
-    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
