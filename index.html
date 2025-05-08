@@ -3,11 +3,738 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./recources/styles/main.css">
-    <title>Document</title>
+    <title>Learning Platform - Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: rgb(237, 234, 255);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Course Cards Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgb(237, 234, 255);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon i {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li i {
+            color: rgb(237, 234, 255);
+            margin-right: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #34495e;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Featured Courses Section */
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-image {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background: rgb(237, 234, 255);
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid rgb(237, 234, 255);
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #2c3e50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .courses-grid,
+            .featured-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                width: 100%;
+            }
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            color: rgb(237, 234, 255);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: rgb(237, 234, 255);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(237, 234, 255);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .login-button {
+            color: #2c3e50;
+            border: 2px solid rgb(237, 234, 255);
+        }
+
+        .login-button:hover {
+            background: rgb(237, 234, 255);
+        }
+
+        .signup-button {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .signup-button:hover {
+            background: #34495e;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+        }
+
+        /* Add these new styles for the dropdown menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgb(237, 234, 255);
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
-    <script src="./recources/scripts/main.js"></script>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="language_courses/courses_page.html">Language Courses</a>
+                <a href="programming_courses/index.html">Programming Courses</a>
+                <a href="soft_skills/index.html">Soft Skills</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Welcome to Our Learning Platform</h1>
+            <p class="subtitle">Discover a world of knowledge with our comprehensive courses in languages, programming, and soft skills.</p>
+        </header>
+
+        <!-- Main Course Categories -->
+        <div class="courses-grid">
+            <!-- Language Courses Card -->
+            <div class="course-card">
+                <div class="card-image">
+                    <img src="language_courses/pics/Statue of Liberty.jpg" alt="Language Courses">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h2>Language Courses</h2>
+                    <p>Master new languages and explore different cultures through our comprehensive language courses.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> English, Spanish, French, Japanese</li>
+                        <li><i class="fas fa-check"></i> Interactive learning methods</li>
+                        <li><i class="fas fa-check"></i> Cultural immersion</li>
+                    </ul>
+                    <a href="language_courses/courses_page.html" class="cta-button">Explore Languages</a>
+                </div>
+            </div>
+
+            <!-- Programming Courses Card -->
+            <div class="course-card">
+                <div class="card-image">
+                    <img src="programming_courses/items/programming.jpg" alt="Programming Courses">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2>Programming Courses</h2>
+                    <p>Learn to code and develop your technical skills with our expert-led programming courses.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Web Development</li>
+                        <li><i class="fas fa-check"></i> Mobile App Development</li>
+                        <li><i class="fas fa-check"></i> Data Science</li>
+                    </ul>
+                    <a href="programming_courses/index.html" class="cta-button">Start Coding</a>
+                </div>
+            </div>
+
+            <!-- Soft Skills Card -->
+            <div class="course-card">
+                <div class="card-image">
+                    <img src="language_courses/pics/soft-skills.jpg" alt="Soft Skills">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>Soft Skills</h2>
+                    <p>Enhance your professional development with essential soft skills training.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Communication Skills</li>
+                        <li><i class="fas fa-check"></i> Leadership Development</li>
+                        <li><i class="fas fa-check"></i> Team Collaboration</li>
+                    </ul>
+                    <a href="#" class="cta-button">Develop Skills</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Active Students</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Expert Instructors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Courses Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Courses Section -->
+        <div class="featured-section">
+            <div class="section-header">
+                <h2>Featured Courses</h2>
+                <p>Most popular courses this month</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="language_courses/pics/japan.jpg" alt="Japanese Course">
+                    </div>
+                    <div class="featured-content">
+                        <span class="course-tag">Language</span>
+                        <h3>Japanese for Beginners</h3>
+                        <p>Start your journey into Japanese language and culture</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="programming_courses/items/web-dev.jpg" alt="Web Development">
+                    </div>
+                    <div class="featured-content">
+                        <span class="course-tag">Programming</span>
+                        <h3>Full Stack Web Development</h3>
+                        <p>Master modern web development technologies</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="language_courses/pics/leadership.jpg" alt="Leadership">
+                    </div>
+                    <div class="featured-content">
+                        <span class="course-tag">Soft Skills</span>
+                        <h3>Leadership Mastery</h3>
+                        <p>Develop essential leadership skills for success</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <div class="section-header">
+                <h2>Student Success Stories</h2>
+                <p>What our students say about their learning journey</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The language courses are incredibly well-structured. I went from zero to conversational Spanish in just 3 months!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="language_courses/pics/student1.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Spanish Course Graduate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The programming courses gave me the skills I needed to land my dream job as a web developer. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="programming_courses/items/student2.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Web Development Graduate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The soft skills training transformed my career. I'm now leading a team of 20 people with confidence."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="language_courses/pics/student3.jpg" alt="Emma Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Leadership Course Graduate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="newsletter-section">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for course updates, learning tips, and exclusive offers.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="cta-button">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
