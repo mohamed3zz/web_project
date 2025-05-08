@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Base Styles and Reset
+   ========================================================================== */
+/* Reset default styles and set base font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Base body styles with background and text colors */
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 2rem;
+    color: #333;
+}
+
+/* ==========================================================================
+   Layout Components
+   ========================================================================== */
+/* Main container with max-width and centered content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Main title with centered alignment and spacing */
+.main-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+/* ==========================================================================
+   Course Grid Layout
+   ========================================================================== */
+/* Flex container for course cards with vertical spacing */
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Course Card Components
+   ========================================================================== */
+/* Base styles for individual course cards */
+.course-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    height: 300px;
+    width: 100%;
+    display: flex;
+}
+
+/* Hover effect: card elevation and height increase */
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    height: 500px;
+}
+
+/* ==========================================================================
+   Course Card Image
+   ========================================================================== */
+/* Container for course image with fixed dimensions */
+.card-image {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Image styles with cover fit and smooth transition */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Image zoom effect on card hover */
+.course-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Course Card Content
+   ========================================================================== */
+/* Main content container with relative positioning */
+.card-content {
+    padding: 1rem;
+    padding-top: 2rem;
+    position: relative;
+    width: 60%;
+    z-index: 1;
+}
+
+/* Course icon with circular background */
+.card-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: rgb(237, 234, 255);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/* Course title with brand color */
+h2 {
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+/* Course description with muted color */
+p {
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Features List
+   ========================================================================== */
+/* Container for features list */
+.features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.8rem 0;
+}
+
+/* Individual feature item with custom bullet */
+.features li {
+    padding: 0.3rem 0;
+    color: #555;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+/* Custom bullet point with brand color */
+.features li:before {
+    content: "•";
+    color: rgb(237, 234, 255);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+   Expandable Content
+   ========================================================================== */
+/* Hidden content section with transition */
+.expanded-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Show expanded content on card hover */
+.course-card:hover .expanded-content {
+    opacity: 1;
+    max-height: 300px;
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Course Details
+   ========================================================================== */
+/* Container for detailed course information */
+.course-details {
+    margin-bottom: 1rem;
+}
+
+/* Section heading for course details */
+.course-details h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* List container for course details */
+.course-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual detail item with icon alignment */
+.course-details li {
+    padding: 0.3rem 0;
+    color: #555;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+/* Icon styling in course details */
+.course-details li i {
+    color: rgb(237, 234, 255);
+    margin-right: 0.5rem;
+    width: 20px;
+}
+
+/* ==========================================================================
+   Call to Action
+   ========================================================================== */
+/* Enrollment button with hover effects */
+.enroll-btn {
+    background: rgb(237, 234, 255);
+    color: #2c3e50;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1.5rem;
+    display: block;
+}
+
+/* Button hover state with elevation */
+.enroll-btn:hover {
+    background: rgb(217, 214, 235);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+/* Mobile device breakpoint */
+@media (max-width: 768px) {
+    /* Stack card elements vertically */
+    .course-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* Full-width image on mobile */
+    .card-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    /* Full-width content on mobile */
+    .card-content {
+        width: 100%;
+    }
+
+    /* Adjust expanded content behavior for mobile */
+    .expanded-content {
+        max-height: none;
+    }
+
+    .course-card:hover .expanded-content {
+        max-height: none;
+    }
+}
