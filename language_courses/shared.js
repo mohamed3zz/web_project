@@ -83,50 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Navigation Menu Highlighting
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.course-nav a');
-    
-    function highlightNav() {
-        const scrollPosition = window.scrollY;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    // Smooth scroll to sections
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    window.addEventListener('scroll', highlightNav);
-    highlightNav(); // Initial highlight
-});
-
 // Form Submission Handling
 document.addEventListener('DOMContentLoaded', function() {
     const enrollmentForm = document.querySelector('.enrollment-form');
@@ -155,40 +111,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
-// Scroll Animations
-document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.overview-card, .feature, .instructor-card, .timeline-item');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-});
-
-// Add animation classes to CSS
-const style = document.createElement('style');
-style.textContent = `
-    .overview-card, .feature, .instructor-card, .timeline-item {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .overview-card.animate, .feature.animate, .instructor-card.animate, .timeline-item.animate {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style); 
+}); 
