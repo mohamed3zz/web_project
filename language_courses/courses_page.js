@@ -11,16 +11,16 @@ function handleEnrollment(courseName) {
     // Open the corresponding course page
     switch(course) {
         case 'english':
-            window.open('english/english.html', '_blank');
+            window.open('english/english.html', );
             break;
         case 'spanish':
-            window.open('spanish/spanish.html', '_blank');
+            window.open('spanish/spanish.html', );
             break;
         case 'french':
-            window.open('french/french.html', '_blank');
+            window.open('french/french.html', );
             break;
         case 'japanese':
-            window.open('japanese/japanese.html', '_blank');
+            window.open('japanese/japanese.html', );
             break;
         default:
             alert(`Thank you for your interest in our ${courseName} course! Our team will contact you shortly with enrollment details.`);
