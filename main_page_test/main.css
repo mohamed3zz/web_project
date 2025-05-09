@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 2rem;
-  background: linear-gradient(to right, white, #eef2ff);
+  background: rgb(237, 234, 255);
   color: #333;
 }
 
@@ -67,8 +67,8 @@ body {
 
 .badge {
   display: inline-block;
-  background: #e0e7ff;
-  color: #4338ca;
+  background: rgb(237, 234, 255);
+  color: #2c3e50;
   padding: 0.3rem 0.7rem;
   font-size: 0.9rem;
   border-radius: 999px;
@@ -79,13 +79,13 @@ h2 {
   font-size: 2.5rem;
   font-weight: bold;
   margin: 1rem 0;
-  color: #111827;
+  color: #2c3e50;
   line-height: 1.2;
 }
 
 p {
   font-size: 0.9rem;
-  color: #4b5563;
+  color: #666;
   margin-top: 1rem;
 }
 
@@ -97,7 +97,7 @@ details {
 summary {
   cursor: pointer;
   font-weight: 600;
-  color: #6366f1;
+  color: #2c3e50;
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
@@ -118,7 +118,7 @@ summary span {
 .faq-text {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #666;
 }
 
 /* Course Promo Section */
@@ -192,19 +192,19 @@ summary span {
 
 .features li {
   font-weight: 600;
-  color: #6366f1;
+  color: #2c3e50;
   margin: 0.5rem 0;
 }
 
 .features li span {
-  color: #facc15;
+  color: rgb(237, 234, 255);
   margin-right: 0.5rem;
 }
 
 .cta-button {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #4f46e5;
+  background: #2c3e50;
   color: white;
   font-weight: 600;
   border: none;
@@ -213,5 +213,5 @@ summary span {
 }
 
 .cta-button:hover {
-  background: #4338ca;
+  background: #34495e;
 }

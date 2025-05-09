@@ -11,7 +11,7 @@
 
 /* Base body styles with background and text colors */
 body {
-    background-color: #f5f5f5;
+    background-color: rgb(237, 234, 255);
     min-height: 100vh;
     padding: 2rem;
     color: #333;
@@ -146,7 +146,7 @@ p {
 /* Individual feature item with custom bullet */
 .features li {
     padding: 0.3rem 0;
-    color: #555;
+    color: #666;
     display: flex;
     align-items: center;
     font-size: 0.9rem;
@@ -202,7 +202,7 @@ p {
 /* Individual detail item with icon alignment */
 .course-details li {
     padding: 0.3rem 0;
-    color: #555;
+    color: #666;
     display: flex;
     align-items: center;
     font-size: 0.9rem;

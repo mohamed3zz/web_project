@@ -5,15 +5,16 @@
 }
 
 body {
-    background-color: #252525;
+    background-color: rgb(237, 234, 255);
     font-family: sans-serif;
     height: 100vh;
+    color: #333;
 }
 
 nav {
     width: 550px;
     height: 50px;
-    background-color: #404040;
+    background-color: white;
     position: relative;
     left: 50%;
     top: 50%;
@@ -33,7 +34,7 @@ nav {
 nav a {
    position: relative;
    text-decoration: none;
-   color: white;
+   color: #2c3e50;
    font-size: 15px;  
    text-transform: uppercase; 
    line-height: 50px;
@@ -47,7 +48,7 @@ nav .animation {
  height: 100%;
  top: 0;
  left: 0; 
- background-color: #ff3030;
+ background-color: rgb(237, 234, 255);
  border-radius: 10px;
  -webkit-border-radius:10px;
  -moz-border-radius:10px;
@@ -59,7 +60,6 @@ nav .animation {
  -moz-transition: 0.5;
  -ms-transition:0.5;
  -o-transition: 0.5;
-
 }
 
 
@@ -113,13 +113,15 @@ nav a:nth-child(5) :hover~.animation {
 
 
 body {
-    background: #f2f2f2;
+    background: rgb(237, 234, 255);
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 h1 {
     text-align: center;
+    color: #2c3e50;
 }
 .container {
     width: 100%;
@@ -132,10 +134,10 @@ h1 {
 }
 .card {
     height: fit-content;
-    background: #fff;
+    background: white;
     border-radius: 1.2em;
     padding: 1.2em;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
     margin-inline: 1.2em;
     display: flex;
     gap: 1em;
@@ -156,17 +158,17 @@ h1 {
         /* gap: .1em; */
         & h2 {
             font-size: 2em;
-
-}
-& p {
-    font-size: 1.2em;
-    opacity: .7;
-}
+            color: #2c3e50;
+        }
+        & p {
+            font-size: 1.2em;
+            color: #666;
+        }
         & .icons {
             display: flex;
             gap: .5em;
             font-size: 1.5em;
-            opacity: .9;
+            color: #2c3e50;
             & div {
                 display: flex;
                 align-items: center;
@@ -176,6 +178,6 @@ h1 {
     }
 }
 a {
-    text-decoration:none;
-    color:#000;
+    text-decoration: none;
+    color: #2c3e50;
 }
