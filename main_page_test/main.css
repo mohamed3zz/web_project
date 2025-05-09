@@ -7,6 +7,8 @@ body {
 }
 
 .container {
+  background-color: #ffffff;
+  border-radius: 20px;
   max-width: 1200px;
   margin: auto;
   display: flex;
